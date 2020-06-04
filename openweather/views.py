@@ -9,6 +9,6 @@ class WeatherView(APIView):
     serializer_class = WeatherSerializer
 
     def get(self, request):
-        weather = WeatherBase.objects.all()#latest('date_today')
+        weather = WeatherBase.objects.latest('date_today')
         serializer = WeatherSerializer(weather)
         return Response(serializer.data)
